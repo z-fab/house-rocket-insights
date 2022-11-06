@@ -1,4 +1,5 @@
-# **House Rocket :: Aumento do Lucro a partir de Dados**
+<h1 style="border-bottom: none; font-size: 2.5em; margin-bottom: 0px"> House Rocket</h1>
+<h1 style="margin-top: -10px; font-style: italic">Aumento do Lucro a partir de Dados</h1>
 
 A House Rocket (H.R.) é uma empresa de compra e venda de imóvel que atua principalmente no condado de King, no estado de Washington, EUA. Ela é uma empresa fictícia e usada aqui para ilustrar o **processo de geração de insights** através da análise e manipulação de dados para auxiliar na **tomada de decisões de negócio**.
 
@@ -16,11 +17,17 @@ Foi apresentado as seguintes questões a serem respondidas com base nos dados do
 
 2. Uma vez a casa comprada, qual o melhor momento para vendê-las e por qual preço?
 
-### **1.2 Premissas**
+
+
+### **1.3 Premissas**
  
 * Podem haver erros de digitação em alguns registros que devem ser tratados/removidos durante a limpeza dos dados.
 
-* Todas as casas no portfólio estão disponíveis para compra e venda
+* Todas as casas no portfólio estão disponíveis para compra e venda.
+
+* A variável `date` se refere a data em que o imóvel foi disponibilizado para venda
+
+* Imóveis em que a variável `yr_renovated` for igual a 0, considera-se que não passou por reformas
 
 ## **2. Planejamento da Solução**
 
