@@ -18,6 +18,8 @@ Foi apresentado as seguintes questões a serem respondidas com base nos dados do
 
 2. Uma vez a casa comprada, qual o melhor momento para vendê-las e por qual preço?
 
+> Você pode verificar a resposta para essas perguntas no [Dashboard online](https://z-fab-project-house-rocket-insi-house-rocket-insight-app-4jg1tv.streamlit.app/)
+
 ### **1.2 Dados**
 
 Os dados foram retirados do Kaggle e podem ser visto [aqui](https://www.kaggle.com/datasets/harlfoxem/housesalesprediction)
@@ -124,7 +126,7 @@ Foi feito como entregável para esses problemas de negócios
 
 * Tabela (csv) com imóveis a serem comprados e sugestão de preço de oferta
 * Tabela (csv) com imóveis a serem vendidos e sugestão de preço de venda
-* Dashboard online com as informações geradas
+* [Dashboard online](https://z-fab-project-house-rocket-insi-house-rocket-insight-app-4jg1tv.streamlit.app/) com as informações geradas
 
 
 ## **3. Principais Insights encontrados**
