@@ -64,7 +64,7 @@ def set_home(df, tab):
     with tab:
         st.title('House Rocket Guide')
         st.markdown("A House Rocket (H.R.) é uma empresa de compra e venda de imóvel que atua principalmente no condado de King, no estado de Washington, EUA. Ela é uma empresa fictícia e usada aqui para ilustrar o **processo de geração de insights** através da análise e manipulação de dados para auxiliar na **tomada de decisões de negócio**.")
-        #st.info('Veja o repositório desse projeto no [Github](https://github.com/z-fab/project-house-rocket-insights)', icon="ℹ️")
+        st.info('Veja o repositório desse projeto no [Github](https://github.com/z-fab/project-house-rocket-insights)', icon="ℹ️")
         st.markdown("""
             ## **1. Contexto de Negócio**
             A área estratégica da House Rocket deseja encontrar as melhores oportunidades de compra e venda de imóveis para maximizar os lucros da empresa. 
