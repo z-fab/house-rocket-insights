@@ -51,7 +51,7 @@ Os dados foram retirados do Kaggle e podem ser visto [aqui](https://www.kaggle.c
  
 * Podem haver erros de digitação em alguns registros que devem ser tratados/removidos durante a limpeza dos dados.
 
-* As variáveis `sqft_living15` e `sqft_lot15` foram desconsideradas e removidas
+* As variáveis `sqft_living15`, `grade` e `sqft_lot15` foram desconsideradas e removidas
 
 * A variável `date` se refere a data em que o imóvel foi disponibilizado para venda
 
@@ -129,8 +129,42 @@ Foi feito como entregável para esses problemas de negócios
 
 ## **3. Principais Insights encontrados**
 
+Os principais insights encontrados foram:
+
+### **3.1 Os imóveis mais caros estão concentrados na região Norte e Central**
+
+É possível perceber, ao olhar para o mapa que os imóveis com maior preço (> $600k) se encontram na região central e norte. 
+
+![Os imóveis mais caros estão concentrados na região Norte e Central](img/p1.png "Os imóveis mais caros estão concentrados na região Norte e Central")
+
+
+### **3.2 Imóveis construidos entre 1940 e 1980 são 15% mais baratos**
+
+Ao agruparmos os imóveis por data de contrução percebemos que aqueles que foram construídos entre 1940 e 1980 são, em média, 15% mais baratos
+
+![Imóveis construidos entre 1940 e 1980 são 15% mais baratos](img/p2.png "Imóveis construidos entre 1940 e 1980 são 15% mais baratos")
+
+### **3.3 Imóveis construidos na década de 30 tem uma proporção maior de reformas**
+
+Há um aumento abrupto na proporção de imóveis reformados e que foram construídos na decada de 30 (1930 à 1939). Cerca de 16% dos imóveis construídos nessa época foram reformados em algum momento, valor semelhante aos cosntruidos no começo do século 20
+
+![Imóveis construidos na década de 30 tem uma proporção maior de reformas](img/p3.png "Imóveis construidos na década de 30 tem uma proporção maior de reformas")
+
 ## **4. Resultados (ROI - Return on Investment)**
+
+![Imóveis construidos na década de 30 tem uma proporção maior de reformas](img/p4.jpg "Imóveis construidos na década de 30 tem uma proporção maior de reformas")
+
+Caso todos os imóveis que foram comprados, assim como sugerido, sejam vendidos posteriormente, a House Rocket terá um lucro estimado de **$ 51 milhões**
 
 ## **5. Conclusão**
 
+A análise dos dados trouxeram informações valiosas para que a área responsável possa tomar a decisão de qual imóvel comprar e qual venda.
+
+Mais do que apenas indicar os imóveis, conseguimos modelar uma lógica de precificação baseado na densidade de anúncios por região e pela sazonalidade para a venda
+
 ## **6. Próximos Passos**
+
+Como próximos passos, sugerimos:
+
+* Aprofundar a lógica de precificação adicionando mais registros (inclusive de outros peíodos que não apenas 2014 e 2015)
+* Treinar modleos de ML para estimar valores de compra e venda com base em certas características
