@@ -1,5 +1,6 @@
-<h1 style="border-bottom: none; font-size: 2.5em; margin-bottom: 0px"> House Rocket</h1>
-<h1 style="margin-top: -10px; font-style: italic">Aumento do Lucro a partir de Dados</h1>
+# House Rocket
+> Aumento do Lucro a partir de Dados
+
 
 A House Rocket (H.R.) é uma empresa de compra e venda de imóvel que atua principalmente no condado de King, no estado de Washington, EUA. Ela é uma empresa fictícia e usada aqui para ilustrar o **processo de geração de insights** através da análise e manipulação de dados para auxiliar na **tomada de decisões de negócio**.
 
@@ -17,19 +18,114 @@ Foi apresentado as seguintes questões a serem respondidas com base nos dados do
 
 2. Uma vez a casa comprada, qual o melhor momento para vendê-las e por qual preço?
 
+### **1.2 Dados**
+
+Os dados foram retirados do Kaggle e podem ser visto [aqui](https://www.kaggle.com/datasets/harlfoxem/housesalesprediction)
+
+| Variável | Significado |
+| --- | --- |
+|id| Identificação única de cada imóvel|
+|date| Data em que o imóvel ficou disponível para venda
+|price| Valor de venda
+|bedrooms| Número de quartos
+|bathrooms| Número de banheiros, onde .5 refere-se a lavabos (i.e. sem chuveiro)
+|sqft_living| Tamanho construído do imóvel em pés quadrados
+|sqft_lot| Tamanho total do terreno em pés quadrados
+|floors| Número de andares
+|waterfront| Indica se a propriedade tem vista para a água ou não 
+|view| Um índice de 0 a 4 para a qualidade da vista da propriedade, em que:  0 = sem vista, 1 = regular 2 = média, 3 = boa, 4 = excelente
+|condition| Um índice de 1 a 5 para a integridade física da propriedade, em que: 1 = muito ruim, 2 = ruim, 3 = média, 4 = boa, 5= excelente
+|sqft_above| O tamanho do sotão do imóvel em pés quadrados
+|sqft_basement| O tamanho do porão do imóvel em pés quadrados
+|yr_built| O ano em que a propriedade foi construída 
+|yr_renovated| O ano em que o imóvel foi reformado pela última vez
+|zipcode| O zipcode do imóvel
+|lat| Latitude do imóvel
+|long| Longitude do imóvel
+|sqft_living15| O tamanho construido dos imóveis dos 15 vizinhos mais próximos (em pés quadrados)
+|sqft_lot15| O tamanho do terreno dos imóveis dos 15 vizinhos mais próximos (em pés quadrados)
+
 
 
 ### **1.3 Premissas**
  
 * Podem haver erros de digitação em alguns registros que devem ser tratados/removidos durante a limpeza dos dados.
 
-* Todas as casas no portfólio estão disponíveis para compra e venda.
+* As variáveis `sqft_living15` e `sqft_lot15` foram desconsideradas e removidas
 
 * A variável `date` se refere a data em que o imóvel foi disponibilizado para venda
 
 * Imóveis em que a variável `yr_renovated` for igual a 0, considera-se que não passou por reformas
 
+
 ## **2. Planejamento da Solução**
+
+Para resolver os problemas de negócio exploramos os dados, criamos hipóteses, as validamos e os aprendizados, usamos na construção da solução, que foram entregues de acordo com a necessidade.
+
+### **2.1 Ferramentas e Técnicas usadas**
+
+Para resolução dos problemas apresentados foi utilizado:
+
+* Python, Pandas, Matplotlib, Plotly, Seaborn e Geopandas
+* Jupyter Notebook e VSCode
+* Streamlit e Streamlit Cloud
+* Git e Github
+* Técnicas de estatística descritiva
+* Técnicas de Exploração e Análise de Dados (EDA) 
+
+### **2.2 Resolução dos problemas**
+
+O seguinte raciocínio foi utilizado para a construção da solução
+
+#### **1. Quais são os imóveis que a House Rocket deveria comprar e por qual preço?**
+
+Para resolver esse problema, primeiramente agrupamos os imóveis por localização (`zipcode`) e encontramos o valor mediano de venda para cada região.
+
+Com essa informação sugerimos a compra dos imóveis que preenchessem as seguintes condições:
+
+* O Preço do imóvel esteja abaixo do valor mediano de venda da região
+* O imóvel esteja em condições boa ou excelente
+
+Para calcular o valor de oferta olhamos para a densidade de imóveis disponíveis para venda por região:
+
+* Imóveis em região com até 204 anúncios -> Valor de compra igual ao valor anunciado
+* Imóveis em região com 205 a 282 anúncios -> Valor de compra 2% menor que o anunciado
+* Imóveis em região com 283 a 409 anúncios -> Valor de compra 3% menor que o anunciado
+* Imóveis em região com 410 ou mais anúncios -> Valor de compra 5% menor que o anunciado
+
+*As faixas dos anúncios foram determinados com base nos quartis do agrupamento*
+
+#### **2. Uma vez a casa comprada, qual o melhor momento para vendê-las e por qual preço?**
+
+Para chegar nessa resposta, agrupamos novamente o imóvel pelo `zipcode` e pegamos a estação do ano em que o imóvel foi anunciado já que o preço varia dependendo da época do ano em que o anuncio foi feito.
+
+Com essas informações, sugerimos a venda em determinada estação do ano e pelo valor que segue a seguinte regra:
+
+* Se o preço anunciado for maior que o preço mediano dos imóveis naquela região e na mesma estação do ano:
+    * Imóveis em região com até 204 anúncios -> Valor de venda 3% maior que o anunciado
+    * Imóveis em região com 205 a 282 anúncios -> Valor de venda 2% maior que o anunciado
+    * Imóveis em região com 283 a 409 anúncios -> Valor de venda 1% maior que o anunciado
+    * Imóveis em região com 410 ou mais anúncios -> Valor de venda 0,5% maior que o anunciado
+
+
+* Se o preço anunciado for menor que o preço mediano dos imóveis naquela região e na mesma estação do ano:
+    * Imóveis em região com até 204 anúncios -> Valor de venda 30% maior que o anunciado
+    * Imóveis em região com 205 a 282 anúncios -> Valor de venda 20% maior que o anunciado
+    * Imóveis em região com 283 a 409 anúncios -> Valor de venda 15% maior que o anunciado
+    * Imóveis em região com 410 ou mais anúncios -> Valor de venda 10% maior que o anunciado
+
+
+*As faixas dos anúncios foram determinados com base nos quartis do agrupamento*
+
+
+### **2.3 Entregáveis**
+
+Foi feito como entregável para esses problemas de negócios
+
+* Tabela (csv) com imóveis a serem comprados e sugestão de preço de oferta
+* Tabela (csv) com imóveis a serem vendidos e sugestão de preço de venda
+* Dashboard online com as informações geradas
+
 
 ## **3. Principais Insights encontrados**
 
